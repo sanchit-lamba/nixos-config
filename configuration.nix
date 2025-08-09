@@ -140,25 +140,33 @@
   services.asusd.enable = true;
   virtualisation.docker.enable = true;
   services = {
-  desktopManager.plasma6.enable = true;
-
-  displayManager.sddm.enable = true;
-
-  displayManager.sddm.wayland.enable = true;
-};
+    xserver = {
+      enable = true;
+      desktopManager.gnome.enable = true;
+    };
+    displayManager.gdm.enable = true;
+    displayManager.gdm.wayland = true;
+  };
 
 environment.systemPackages = with pkgs;
   [
-    kdePackages.discover # Optional: Install if you use Flatpak or fwupd firmware update sevice
-    kdePackages.kcalc # Calculator
-    kdePackages.kcharselect # Tool to select and copy special characters from all installed fonts
-    kdePackages.kcolorchooser # A small utility to select a color
-    kdePackages.kolourpaint # Easy-to-use paint program
-    kdePackages.ksystemlog # KDE SystemLog Application
-    kdePackages.sddm-kcm # Configuration module for SDDM
+    # GNOME applications and utilities
+    gnome-calculator # Calculator
+    gnome-characters # Character selector
+    gnome-color-manager # Color management
+    gnome-disk-utility # Disk management
+    gnome-system-monitor # System monitor
+    nautilus # File manager
+    evince # PDF viewer
+    eog # Image viewer
+    file-roller # Archive manager
+    gnome-terminal # Terminal
+    gnome-text-editor # Text editor
+    gnome-tweaks # GNOME tweaks
+    extension-manager # GNOME extensions manager
+    
+    # Keep some useful applications
     kdiff3 # Compares and merges 2 or 3 files or directories
-    kdePackages.isoimagewriter # Optional: Program to write hybrid ISO files onto USB disks
-    kdePackages.partitionmanager # Optional Manage the disk devices, partitions and file systems on your computer
     hardinfo2 # System information and benchmarks for Linux systems
     haruna # Open source video player built with Qt/QML and libmpv
     wayland-utils # Wayland utilities
