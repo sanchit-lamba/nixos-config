@@ -103,6 +103,28 @@
      docker
      vivaldi-ffmpeg-codecs
      warp-terminal
+     
+    # GNOME applications and utilities
+    gnome-calculator # Calculator
+    gnome-characters # Character selector
+    gnome-color-manager # Color management
+    gnome-disk-utility # Disk management
+    gnome-system-monitor # System monitor
+    nautilus # File manager
+    evince # PDF viewer
+    eog # Image viewer
+    file-roller # Archive manager
+    gnome-terminal # Terminal
+    gnome-text-editor # Text editor
+    gnome-tweaks # GNOME tweaks
+    extension-manager # GNOME extensions manager
+    
+    # Keep some useful applications
+    kdiff3 # Compares and merges 2 or 3 files or directories
+    hardinfo2 # System information and benchmarks for Linux systems
+    haruna # Open source video player built with Qt/QML and libmpv
+    wayland-utils # Wayland utilities
+    wl-clipboard # Command-line copy/paste utilities for Wayland
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -147,29 +169,4 @@
     displayManager.gdm.enable = true;
     displayManager.gdm.wayland = true;
   };
-
-environment.systemPackages = with pkgs;
-  [
-    # GNOME applications and utilities
-    gnome-calculator # Calculator
-    gnome-characters # Character selector
-    gnome-color-manager # Color management
-    gnome-disk-utility # Disk management
-    gnome-system-monitor # System monitor
-    nautilus # File manager
-    evince # PDF viewer
-    eog # Image viewer
-    file-roller # Archive manager
-    gnome-terminal # Terminal
-    gnome-text-editor # Text editor
-    gnome-tweaks # GNOME tweaks
-    extension-manager # GNOME extensions manager
-    
-    # Keep some useful applications
-    kdiff3 # Compares and merges 2 or 3 files or directories
-    hardinfo2 # System information and benchmarks for Linux systems
-    haruna # Open source video player built with Qt/QML and libmpv
-    wayland-utils # Wayland utilities
-    wl-clipboard # Command-line copy/paste utilities for Wayland
-  ];
 }
