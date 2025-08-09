@@ -110,9 +110,9 @@
     gnome-color-manager # Color management
     gnome-disk-utility # Disk management
     gnome-system-monitor # System monitor
-    nautilus # File manager
-    evince # PDF viewer
-    eog # Image viewer
+  environment.variables = {
+    XCURSOR_THEME = "Adwaita";
+    XCURSOR_SIZE = "24";
     file-roller # Archive manager
     gnome-terminal # Terminal
     gnome-text-editor # Text editor
@@ -124,7 +124,7 @@
     hardinfo2 # System information and benchmarks for Linux systems
     haruna # Open source video player built with Qt/QML and libmpv
     wayland-utils # Wayland utilities
-    wl-clipboard # Command-line copy/paste utilities for Wayland
+    wl-clipboard # Command-line copy/paste utilities ford
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
