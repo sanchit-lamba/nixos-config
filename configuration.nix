@@ -117,7 +117,7 @@
     gnome-terminal # Terminal
     gnome-text-editor # Text editor
     gnome-tweaks # GNOME tweaks
-    extension-manager # GNOME extensions manager
+    gnome-shell-extensions # GNOME extensions manager
     
     # Keep some useful applications
     kdiff3 # Compares and merges 2 or 3 files or directories
@@ -153,6 +153,23 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
+  services.xserver = {
+    enable = true;
+    desktopManager.gnome = {
+      enable = true;
+      # This is the important part to make fractional scaling appear in the UI
+      extraGSettingsOverrides = ''
+        [org.gnome.mutter]
+        experimental-features=['scale-monitor-framebuffer']
+      '';
+      # Ensure Mutter schemas are available for GSettings
+      extraGSettingsOverridePackages = [ pkgs.mutter ];
+    };
+    displayManager.gdm = {
+      enable = true;
+      wayland = true; # Crucial for modern Gnome HiDPI on Wayland
+    };
+  };
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   home-manager = {
     backupFileExtension = "hm-bak";
@@ -161,12 +178,4 @@
   programs.adb.enable = true;
   services.asusd.enable = true;
   virtualisation.docker.enable = true;
-  services = {
-    xserver = {
-      enable = true;
-      desktopManager.gnome.enable = true;
-    };
-    displayManager.gdm.enable = true;
-    displayManager.gdm.wayland = true;
-  };
 }
