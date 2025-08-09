@@ -48,9 +48,9 @@
     layout = "us";
     variant = "";
   };
-
+  services.kanata.enable = true;
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  #services.printing.enable = true;
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
@@ -103,7 +103,7 @@
      docker
      vivaldi-ffmpeg-codecs
      warp-terminal
-     
+     lazygit 
     # GNOME applications and utilities
     gnome-calculator # Calculator
     gnome-characters # Character selector
