@@ -23,7 +23,14 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-
+  #dconf
+  programs.dconf.enable = true;
+  #xdg 
+  xdg.portal = {
+  enable = true;
+  wlr.enable = true;
+  # extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+};
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
 
@@ -93,6 +100,7 @@
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
+     gh
      vscode
      obsidian
      stremio
@@ -103,16 +111,15 @@
      docker
      vivaldi-ffmpeg-codecs
      warp-terminal
-     lazygit 
+     lazygit
+     git
+     firefox
     # GNOME applications and utilities
     gnome-calculator # Calculator
     gnome-characters # Character selector
     gnome-color-manager # Color management
     gnome-disk-utility # Disk management
     gnome-system-monitor # System monitor
-  environment.variables = {
-    XCURSOR_THEME = "Adwaita";
-    XCURSOR_SIZE = "24";
     file-roller # Archive manager
     gnome-terminal # Terminal
     gnome-text-editor # Text editor
@@ -125,6 +132,11 @@
     haruna # Open source video player built with Qt/QML and libmpv
     wayland-utils # Wayland utilities
     wl-clipboard # Command-line copy/paste utilities ford
+    code-cursor
+    gsettings-desktop-schemas
+    gtk-engine-murrine  # Required by many themes
+    gnome-themes-extra
+    gruvbox-dark-gtk
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
