@@ -190,4 +190,24 @@
   programs.adb.enable = true;
   services.asusd.enable = true;
   virtualisation.docker.enable = true;
+  programs.dconf.enable = true;
+
+# Ensure XDG desktop integration is enabled
+xdg.portal = {
+  enable = true;
+  wlr.enable = true;
+};
+
+# IMPORTANT: Add gruvbox-dark-gtk to system packages so it's available system-wide
+environment.systemPackages = with pkgs; [
+  # ... your existing packages (vscode, obsidian, etc.) ...
+  
+  # CRITICAL: Add gruvbox theme to system packages
+  gruvbox-dark-gtk
+  
+  # GTK theming support packages:
+  gsettings-desktop-schemas
+  gtk-engine-murrine
+  gnome-themes-extra
+];
 }
