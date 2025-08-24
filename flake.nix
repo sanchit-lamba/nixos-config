@@ -20,7 +20,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, firefox-gnome-theme, winapps, ... }@inputs: # @inputs captures all inputs
+  outputs = { self, nixpkgs, home-manager, firefox-gnome-theme, winapps, ... }@inputs: # Explicitly list all inputs to ensure proper scoping
     let
       system = "x86_64-linux"; # Adjust if your system architecture is different
     in
@@ -46,7 +46,8 @@
         ];
       };
 
-      # Optional: For standalone `home-manager switch --flake .#san`
+      # For standalone `home-manager switch --flake .#san`
+      # home-manager is now properly in scope due to explicit destructuring above
       homeConfigurations.san = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system}; # Note: config.nixpkgs.system is not available here, use system directly
         extraSpecialArgs = { inherit inputs; }; # Pass all flake inputs to home-manager modules
