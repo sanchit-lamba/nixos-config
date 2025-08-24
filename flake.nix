@@ -1,49 +1,89 @@
-# /etc/nixos/flake.nix
 {
-  description = "This flake is a patchwork made by github.com/sanchit-lamba";
+  description = "Sanchit's NixOS Configuration - Merged and Restructured";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05"; # Or your desired nixpkgs branch
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+    
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
-      inputs.nixpkgs.follows = "nixpkgs"; # Ensures HM uses the same nixpkgs
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
-    # Added firefox-gnome-theme as an input
+    
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    
+    # Original inputs
     firefox-gnome-theme = {
       url = "github:rafaelmardojai/firefox-gnome-theme";
-      flake = false; # Important: Treat it as a legacy source tree, not a flake itself
+      flake = false;
     };
+    
+    # Optional advanced inputs for future use
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    
+    nur.url = "github:nix-community/NUR";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: # @inputs captures all inputs
-    let
-      system = "x86_64-linux"; # Adjust if your system architecture is different
-    in
-    {
-      # This is what 'nixos-rebuild switch' will pick up by default
-      # if your hostname is "nixos". If it's different, change "nixos" here
-      # to match your system's hostname.
-      nixosConfigurations.BlitzWing = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = { inherit inputs; }; # Makes all flake inputs (including firefox-gnome-theme) available
+  outputs = {
+    self,
+    nixpkgs,
+    ...
+  } @ inputs: let
+    inherit (self) outputs;
+    
+    # System settings
+    settings = {
+      # User configuration
+      username = "san";
+      hostname = "BlitzWing";
+      
+      # Desktop preferences  
+      desktop = "gnome"; # gnome, hyprland (future)
+      browser = "firefox";
+      terminal = "gnome-terminal"; # Will be modular later
+      editor = "vscode";
+      
+      # System configuration
+      videoDriver = "amdgpu"; # Based on current hardware (AMD)
+      locale = "en_IN";
+      timezone = "Asia/Kolkata";
+      kbdLayout = "us";
+      kbdVariant = "";
+      consoleKeymap = "us";
+    };
 
+    systems = [
+      "x86_64-linux"
+    ];
+    
+    forAllSystems = nixpkgs.lib.genAttrs systems;
+  in {
+    overlays = import ./overlays {inherit inputs settings;};
+    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+    
+    nixosConfigurations = {
+      BlitzWing = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit self inputs outputs;} // settings;
         modules = [
-          # Import the Home Manager NixOS module
-          home-manager.nixosModules.home-manager
-
-          # Import your existing NixOS system configuration
-          ./configuration.nix
-	  # You could add other global modules here if necessary
-	  ./home/wayland.nix
-
+          ./hosts/BlitzWing/configuration.nix
         ];
       };
-
-      # Optional: For standalone `home-manager switch --flake .#san`
-      homeConfigurations.san = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system}; # Note: config.nixpkgs.system is not available here, use system directly
-        extraSpecialArgs = { inherit inputs; }; # Pass all flake inputs to home-manager modules
-        modules = [ ./home/san.nix ./home/winapps-flake.nix ];
-      };
     };
+    
+    # Keep standalone home-manager configuration
+    homeConfigurations.san = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      extraSpecialArgs = {inherit inputs;} // settings;
+      modules = [
+        ./home/san.nix
+      ];
+    };
+  };
 }
