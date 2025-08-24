@@ -234,4 +234,24 @@ home-manager generations
 home-manager packages
 ```
 
+## Quick Reference for Common Scenarios
+
+### New Package Installation
+1. **System package**: Edit `configuration.nix` → `environment.systemPackages`
+2. **User package**: Edit `home/san.nix` → `home.packages`  
+3. **Apply**: `sudo nixos-rebuild switch --flake .#BlitzWing` (system) or `home-manager switch --flake .#san` (user)
+
+### After Configuration Changes
+1. `nix flake check` (validate syntax)
+2. `sudo nixos-rebuild dry-run --flake .#BlitzWing` (test system)
+3. `sudo nixos-rebuild switch --flake .#BlitzWing` (apply system)
+4. `home-manager switch --flake .#san` (apply user)
+5. Reboot and test desktop environment
+
+### Emergency Recovery
+1. List generations: `sudo nixos-rebuild list-generations`
+2. Rollback: `sudo nixos-rebuild switch --rollback`
+3. Boot menu: Select previous generation in GRUB
+4. Home Manager rollback: `home-manager expire-generations "-0 days"`
+
 This configuration provides a complete GNOME desktop environment with development tools, theming, and modern Wayland support. Always follow the validation steps and respect the timeout requirements for reliable operation.
