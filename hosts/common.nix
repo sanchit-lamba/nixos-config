@@ -45,7 +45,7 @@
     useUserPackages = true;
     backupFileExtension = "hm-bak";
     extraSpecialArgs = { inherit inputs; } // { inherit username browser terminal; };
-    users.${username} = import ../home/san.nix;
+    users.${username} = import ../../home/san.nix;
   };
 
   # Filesystems support
@@ -145,10 +145,6 @@
 
   # Enable touchpad support
   services.libinput.enable = true;
-
-  # Default shell - using bash for now, but making it configurable
-  users.defaultUserShell = pkgs.bash;
-  programs.bash.enable = true;
 
   # Fonts
   fonts.fontDir.enable = true;

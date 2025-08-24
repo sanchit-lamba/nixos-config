@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./dconf.nix
+    ../wayland.nix
   ];
   
   services.xserver = {

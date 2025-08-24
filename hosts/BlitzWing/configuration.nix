@@ -24,41 +24,28 @@
     ../../modules/programs/development
     ../../modules/programs/media
     ../../modules/programs/utilities
+    ../../modules/programs/terminal
+    ../../modules/programs/shell/bash
+    # ../../modules/programs/virtualization/winapps  # Uncomment if needed
   ];
 
   # Additional packages specific to this system
   environment.systemPackages = with pkgs; [
-    # Applications from original config
-    vscode
-    obsidian
-    stremio
-    vivaldi
-    neovim
-    podman
-    podman-compose
-    docker
-    vivaldi-ffmpeg-codecs
-    warp-terminal
-    
-    # GNOME applications
+    # GNOME applications (additional to base GNOME)
     gnome-calculator
     gnome-characters
     gnome-color-manager
     gnome-disk-utility
     gnome-system-monitor
     file-roller
-    gnome-terminal
     gnome-text-editor
-    gnome-tweaks
-    gnome-shell-extensions
     
-    # Utilities
+    # Utilities specific to this system
     kdiff3
     hardinfo2
     haruna
     wayland-utils
     wl-clipboard
-    code-cursor
   ];
 
   # Home-manager specific packages for this host
