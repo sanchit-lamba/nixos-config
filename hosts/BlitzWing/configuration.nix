@@ -20,7 +20,7 @@
     ../../modules/desktop/${desktop}
     
     # Theme
-    ../../modules/themes/gruvbox
+    ../../modules/themes/gruvbox.nix
     
     # Programs - keeping current applications
     ../../modules/programs/browsers
@@ -28,8 +28,8 @@
     ../../modules/programs/media
     ../../modules/programs/utilities
     ../../modules/programs/terminal
-    ../../modules/programs/shell/bash
-    # ../../modules/programs/virtualization/winapps  # Uncomment if needed
+    ../../modules/programs/shell/bash.nix
+    # ../../modules/programs/virtualization/winapps.nix  # Uncomment if needed
   ];
 
   # Additional packages specific to this system
