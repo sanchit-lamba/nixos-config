@@ -45,7 +45,7 @@
     };
   };
 
-  # This helps ensure GNOME and GTK4 applications respect the theme settings
+  # This helps ensure GTK4 applications respect the theme settings
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       # FIXED: Using correct lowercase theme name "gruvbox-dark"
@@ -54,12 +54,6 @@
       cursor-theme = "Bibata-Modern-Classic";
       # ADDED: Modern color scheme preference for GTK4+ applications
       color-scheme = "prefer-dark";
-    };
-    
-    # ADDED: Additional GNOME settings for consistent theming
-    "org/gnome/desktop/wm/preferences" = {
-      # FIXED: Using correct lowercase theme name "gruvbox-dark"
-      theme = "gruvbox-dark";
     };
   };
 
@@ -93,6 +87,22 @@
     # ADDED: Packages to ensure proper GTK theming support
     gsettings-desktop-schemas  # Provides schemas for GTK settings
     glib  # Provides gsettings command
+    
+    # Hyprland-specific packages
+    waybar
+    hyprlock
+    hypridle
+    hyprpicker
+    wlogout
+    swaynotificationcenter
+    grim
+    slurp
+    swappy
+    cliphist
+    wl-clipboard
+    rofi-wayland
+    kitty
+    wofi
   ];
   
   programs.firefox = {
@@ -118,5 +128,107 @@
       # '';
     };
   };
+
+  # Hyprland configuration with home-manager  
+  wayland.windowManager.hyprland = {
+    enable = true;
+    systemd.enable = true;
+    xwayland.enable = true;
+    settings = {
+      # Basic configuration - can be expanded later
+      general = {
+        gaps_in = 5;
+        gaps_out = 20;
+        border_size = 2;
+        "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
+        "col.inactive_border" = "rgba(595959aa)";
+        layout = "dwindle";
+      };
+      
+      decoration = {
+        rounding = 10;
+        blur = {
+          enabled = true;
+          size = 3;
+          passes = 1;
+        };
+        drop_shadow = true;
+        shadow_range = 4;
+        shadow_render_power = 3;
+        "col.shadow" = "rgba(1a1a1aee)";
+      };
+      
+      animations = {
+        enabled = true;
+        bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
+        animation = [
+          "windows, 1, 7, myBezier"
+          "windowsOut, 1, 7, default, popin 80%"
+          "border, 1, 10, default"
+          "borderangle, 1, 8, default"
+          "fade, 1, 7, default"
+          "workspaces, 1, 6, default"
+        ];
+      };
+      
+      input = {
+        kb_layout = "us";
+        follow_mouse = 1;
+        touchpad = {
+          natural_scroll = false;
+        };
+        sensitivity = 0;
+      };
+      
+      # Basic keybinds
+      bind = [
+        "SUPER, T, exec, kitty"
+        "SUPER, Q, killactive"
+        "SUPER, M, exit"
+        "SUPER, E, exec, thunar"
+        "SUPER, V, togglefloating"
+        "SUPER, R, exec, rofi -show drun"
+        "SUPER, P, pseudo"
+        "SUPER, J, togglesplit"
+        
+        # Move focus with SUPER + arrow keys
+        "SUPER, left, movefocus, l"
+        "SUPER, right, movefocus, r"
+        "SUPER, up, movefocus, u"
+        "SUPER, down, movefocus, d"
+        
+        # Switch workspaces with SUPER + [0-9]
+        "SUPER, 1, workspace, 1"
+        "SUPER, 2, workspace, 2"
+        "SUPER, 3, workspace, 3"
+        "SUPER, 4, workspace, 4"
+        "SUPER, 5, workspace, 5"
+        "SUPER, 6, workspace, 6"
+        "SUPER, 7, workspace, 7"
+        "SUPER, 8, workspace, 8"
+        "SUPER, 9, workspace, 9"
+        "SUPER, 0, workspace, 10"
+        
+        # Move active window to a workspace with SUPER + SHIFT + [0-9]
+        "SUPER SHIFT, 1, movetoworkspace, 1"
+        "SUPER SHIFT, 2, movetoworkspace, 2"
+        "SUPER SHIFT, 3, movetoworkspace, 3"
+        "SUPER SHIFT, 4, movetoworkspace, 4"
+        "SUPER SHIFT, 5, movetoworkspace, 5"
+        "SUPER SHIFT, 6, movetoworkspace, 6"
+        "SUPER SHIFT, 7, movetoworkspace, 7"
+        "SUPER SHIFT, 8, movetoworkspace, 8"
+        "SUPER SHIFT, 9, movetoworkspace, 9"
+        "SUPER SHIFT, 0, movetoworkspace, 10"
+      ];
+      
+      # Mouse binds
+      bindm = [
+        "SUPER, mouse:272, movewindow"
+        "SUPER, mouse:273, resizewindow"
+      ];
+    };
+  };
+  
   programs.home-manager.enable = true;
 }
