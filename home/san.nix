@@ -4,10 +4,6 @@
   home.homeDirectory = lib.mkForce "/home/san";
 
   home.stateVersion = "25.05"; # Ensure this matches your NixOS/Home Manager version
-  home.file.".mozilla/firefox/default/chrome/firefox-gnome-theme" = {
-    source = inputs.firefox-gnome-theme;
-    recursive = true; # Important: copies/links the entire directory content
-  };
   
   gtk = {
     enable = true;
@@ -45,29 +41,22 @@
     };
   };
 
-  # This helps ensure GNOME and GTK4 applications respect the theme settings
+  # GTK and Qt theming settings
   dconf.settings = {
     "org/gnome/desktop/interface" = {
-      # FIXED: Using correct lowercase theme name "gruvbox-dark"
+      # Keep GTK theme settings for compatibility with GTK applications
       gtk-theme = "gruvbox-dark";
       icon-theme = "Gruvbox-Plus-Dark";
       cursor-theme = "Bibata-Modern-Classic";
-      # ADDED: Modern color scheme preference for GTK4+ applications
+      # Modern color scheme preference for GTK4+ applications
       color-scheme = "prefer-dark";
-    };
-    
-    # ADDED: Additional GNOME settings for consistent theming
-    "org/gnome/desktop/wm/preferences" = {
-      # FIXED: Using correct lowercase theme name "gruvbox-dark"
-      theme = "gruvbox-dark";
     };
   };
 
-  # ADDED: Set environment variables for consistent theming across all applications
+  # Set environment variables for consistent theming across all applications
   home.sessionVariables = {
-    # FIXED: Using correct lowercase theme name "gruvbox-dark"
     GTK_THEME = "gruvbox-dark";
-    # ADDED: For Qt applications to use dark theme
+    # For Qt applications to use dark theme
     QT_STYLE_OVERRIDE = "adwaita-dark";
   };
 
@@ -108,14 +97,7 @@
         "browser.tabs.drawInTitlebar" = true;
         "svg.context-properties.content.enabled" = true;
       };
-      userChrome = ''
-        @import "firefox-gnome-theme/userChrome.css";
-        @import "firefox-gnome-theme/theme/colors/dark.css"; /* Or your preferred color variant */
-      '';
-      # If the theme also provides userContent.css:
-      # userContent = ''
-      #   @import "firefox-gnome-theme/userContent.css";
-      # '';
+      # Removed GNOME-specific theme
     };
   };
   programs.home-manager.enable = true;

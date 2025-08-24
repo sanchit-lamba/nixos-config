@@ -8,11 +8,6 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs"; # Ensures HM uses the same nixpkgs
     };
-    # Added firefox-gnome-theme as an input
-    firefox-gnome-theme = {
-      url = "github:rafaelmardojai/firefox-gnome-theme";
-      flake = false; # Important: Treat it as a legacy source tree, not a flake itself
-    };
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: # @inputs captures all inputs
@@ -25,7 +20,7 @@
       # to match your system's hostname.
       nixosConfigurations.BlitzWing = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs; }; # Makes all flake inputs (including firefox-gnome-theme) available
+        specialArgs = { inherit inputs; }; # Makes all flake inputs available
 
         modules = [
           # Import the Home Manager NixOS module

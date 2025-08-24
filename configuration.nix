@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./modules/desktop/hyprland
     ];
 
   # Bootloader.
@@ -25,12 +26,7 @@
   networking.networkmanager.enable = true;
   #dconf
   programs.dconf.enable = true;
-  #xdg 
-  xdg.portal = {
-  enable = true;
-  wlr.enable = true;
-  # extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-};
+  # XDG portal configuration is handled by the Hyprland module
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
 
@@ -114,17 +110,6 @@
      lazygit
      git
      firefox
-    # GNOME applications and utilities
-    gnome-calculator # Calculator
-    gnome-characters # Character selector
-    gnome-color-manager # Color management
-    gnome-disk-utility # Disk management
-    gnome-system-monitor # System monitor
-    file-roller # Archive manager
-    gnome-terminal # Terminal
-    gnome-text-editor # Text editor
-    gnome-tweaks # GNOME tweaks
-    gnome-shell-extensions # GNOME extensions manager
     
     # Keep some useful applications
     kdiff3 # Compares and merges 2 or 3 files or directories
@@ -135,7 +120,6 @@
     code-cursor
     gsettings-desktop-schemas
     gtk-engine-murrine  # Required by many themes
-    gnome-themes-extra
     gruvbox-dark-gtk
   ];
 
@@ -165,23 +149,7 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
-  services.xserver = {
-    enable = true;
-    desktopManager.gnome = {
-      enable = true;
-      # This is the important part to make fractional scaling appear in the UI
-      extraGSettingsOverrides = ''
-        [org.gnome.mutter]
-        experimental-features=['scale-monitor-framebuffer']
-      '';
-      # Ensure Mutter schemas are available for GSettings
-      extraGSettingsOverridePackages = [ pkgs.mutter ];
-    };
-    displayManager.gdm = {
-      enable = true;
-      wayland = true; # Crucial for modern Gnome HiDPI on Wayland
-    };
-  };
+  # These configurations are now handled by the Hyprland module
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   home-manager = {
     backupFileExtension = "hm-bak";
