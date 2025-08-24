@@ -20,7 +20,7 @@
     ../../modules/desktop/${desktop}
     
     # Theme
-    ../../modules/themes/gruvbox.nix
+#    ../../modules/themes/gruvbox.nix
     
     # Programs - keeping current applications
     ../../modules/programs/browsers
@@ -69,7 +69,6 @@
       obs-studio
       android-tools
       thunderbird
-      ulauncher
       refine
       ocs-url
       lm_sensors

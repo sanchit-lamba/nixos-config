@@ -75,12 +75,13 @@
     obs-studio
     android-tools
     thunderbird
-    ulauncher
     refine
     ocs-url
     lm_sensors
     gsettings-desktop-schemas
     glib
+    gtk-engine-murrine
+    gnome-themes-extra
   ];
 
   programs.firefox = {

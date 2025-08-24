@@ -15,7 +15,6 @@
     wl-clipboard
     
     # Launchers and utilities
-    ulauncher
     refine
     ocs-url
     
