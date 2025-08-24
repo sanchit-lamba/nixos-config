@@ -19,6 +19,9 @@
     # Desktop environment
     ../../modules/desktop/${desktop}
     
+    # Theme
+    ../../modules/themes/gruvbox
+    
     # Programs - keeping current applications
     ../../modules/programs/browsers
     ../../modules/programs/development

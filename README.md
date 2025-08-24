@@ -14,10 +14,11 @@ A modular NixOS configuration based on [Sly-Harvey/NixOS](https://github.com/Sly
 ├── modules/                 # Modular system configurations
 │   ├── desktop/            # Desktop environments
 │   │   ├── gnome/          # GNOME desktop configuration
+│   │   ├── hyprland/       # Hyprland wayland compositor (optional)
 │   │   └── wayland.nix     # Wayland application patches
 │   ├── hardware/           # Hardware-specific modules
 │   │   ├── drives/         # Drive and filesystem support
-│   │   └── video/          # GPU driver configurations
+│   │   └── video/          # GPU driver configurations (AMD/NVIDIA/Intel)
 │   ├── programs/           # Application modules
 │   │   ├── browsers/       # Web browsers
 │   │   ├── development/    # Development tools
@@ -25,8 +26,8 @@ A modular NixOS configuration based on [Sly-Harvey/NixOS](https://github.com/Sly
 │   │   ├── shell/          # Shell configurations
 │   │   ├── terminal/       # Terminal applications
 │   │   ├── utilities/      # System utilities
-│   │   └── virtualization/ # Virtualization tools
-│   └── themes/             # Theme configurations
+│   │   └── virtualization/ # Virtualization tools (winapps, etc.)
+│   └── themes/             # Theme configurations (gruvbox)
 ├── home/                   # Home Manager configurations
 │   └── san.nix            # User-specific configuration
 ├── overlays/               # Custom package overlays
@@ -37,10 +38,11 @@ A modular NixOS configuration based on [Sly-Harvey/NixOS](https://github.com/Sly
 
 - **Modular Design**: Each component is separated into its own module for easy management
 - **Configurable Settings**: System settings defined in `flake.nix` for easy customization
-- **Hardware Abstraction**: GPU drivers and hardware configurations are modularized
-- **Desktop Environment Support**: Currently GNOME, easily extensible to other DEs
+- **Hardware Abstraction**: GPU drivers (AMD/NVIDIA/Intel) and hardware configurations are modularized
+- **Desktop Environment Support**: Currently GNOME, with Hyprland ready for future use
 - **Enhanced Theming**: Gruvbox dark theme with proper GTK/Qt integration
 - **Modern NixOS Practices**: Uses flakes, home-manager, and latest NixOS features
+- **Easy Deployment**: Automated scripts for system and home-manager deployment
 
 ## Configuration
 
@@ -55,22 +57,29 @@ The system is configured for:
 
 ## Usage
 
-### Rebuilding the system
+### Quick deployment
+```bash
+./install.sh          # Full system deployment with confirmation
+./home-manager.sh      # Home Manager only deployment
+```
+
+### Manual deployment
+#### Rebuilding the system
 ```bash
 sudo nixos-rebuild switch --flake .#BlitzWing
 ```
 
-### Updating flake inputs
+#### Updating flake inputs
 ```bash
 nix flake update
 ```
 
-### Testing configuration
+#### Testing configuration
 ```bash
 sudo nixos-rebuild test --flake .#BlitzWing
 ```
 
-### Home Manager (standalone)
+#### Home Manager (standalone)
 ```bash
 home-manager switch --flake .#san
 ```

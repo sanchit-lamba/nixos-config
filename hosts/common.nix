@@ -179,10 +179,10 @@
     TERMINAL = terminal;
   };
 
-  # Essential system packages
   # Hardware support
   hardware.enableRedistributableFirmware = true;
 
+  # Essential system packages
   environment.systemPackages = with pkgs; [
     # System utilities
     killall
@@ -196,13 +196,6 @@
     # Development tools
     gh
     lazygit
-    
-    # Theme support
-    gsettings-desktop-schemas
-    gtk-engine-murrine
-    gnome-themes-extra
-    gruvbox-dark-gtk
-    bibata-cursors
   ];
 
   # Programs that need special configuration
