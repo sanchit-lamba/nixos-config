@@ -13,9 +13,14 @@
       url = "github:rafaelmardojai/firefox-gnome-theme";
       flake = false; # Important: Treat it as a legacy source tree, not a flake itself
     };
+    # Added winapps as an input for system-level configuration
+    winapps = {
+      url = "github:winapps-org/winapps";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: # @inputs captures all inputs
+  outputs = { self, nixpkgs, home-manager, firefox-gnome-theme, winapps, ... }@inputs: # Explicitly list all inputs to ensure proper scoping
     let
       system = "x86_64-linux"; # Adjust if your system architecture is different
     in
@@ -35,11 +40,14 @@
           ./configuration.nix
 	  # You could add other global modules here if necessary
 	  ./home/wayland.nix
+	  # System-level winapps configuration
+	  ./home/winapps-system.nix
 
         ];
       };
 
-      # Optional: For standalone `home-manager switch --flake .#san`
+      # For standalone `home-manager switch --flake .#san`
+      # home-manager is now properly in scope due to explicit destructuring above
       homeConfigurations.san = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system}; # Note: config.nixpkgs.system is not available here, use system directly
         extraSpecialArgs = { inherit inputs; }; # Pass all flake inputs to home-manager modules
