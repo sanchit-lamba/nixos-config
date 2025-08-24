@@ -45,7 +45,7 @@
     useUserPackages = true;
     backupFileExtension = "hm-bak";
     extraSpecialArgs = { inherit inputs; } // { inherit username browser terminal; };
-    users.${username} = import ../../home/san.nix;
+    users.${username} = self.san-module;
   };
 
   # Filesystems support

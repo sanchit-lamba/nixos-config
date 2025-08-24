@@ -27,8 +27,8 @@
   environment.gnome.excludePackages = with pkgs; [
     gnome-tour
     gnome-user-docs
-    gnome.gnome-maps
-    gnome.gnome-music
+    gnome-maps
+    gnome-music
   ];
   
   environment.systemPackages = with pkgs; [

@@ -16,9 +16,6 @@
     podman
     podman-compose
     
-    # Terminal
-    warp-terminal
-    
     # Development utilities
     kdiff3
   ];

@@ -73,7 +73,7 @@
   in {
     overlays = import ./overlays {inherit inputs settings;};
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
-    
+    san-module = ./home/san.nix;
     nixosConfigurations = {
       BlitzWing = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
