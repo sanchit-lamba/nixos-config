@@ -6,8 +6,7 @@
     neovim
     code-cursor
     
-    # Version control
-    git
+    # Version control (git is in common.nix)
     gh
     lazygit
     

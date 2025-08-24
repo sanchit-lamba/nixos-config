@@ -188,19 +188,14 @@
     killall
     lm_sensors
     jq
-    git
+    git  # Keep git as it's essential for system operations
     wget
     curl
     unzip
-    
-    # Development tools
-    gh
-    lazygit
   ];
 
   # Programs that need special configuration
   programs = {
-    firefox.enable = true;
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
