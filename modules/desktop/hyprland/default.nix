@@ -36,6 +36,7 @@
     cliphist
     grimblast # screenshot tool
     swappy # screenshot editing
+    wf-recorder # screen recording
     
     # System utilities
     brightnessctl
@@ -49,6 +50,11 @@
     
     # File managers and utilities
     nautilus # Keep nautilus as it works well with Wayland
+    file-roller # Archive manager
+    
+    # Additional useful tools
+    grim # screenshot backend
+    slurp # area selection for screenshots
     
     # Keep existing useful packages
     wayland-utils
@@ -121,6 +127,7 @@
             "${lib.getExe' pkgs.wl-clipboard "wl-paste"} --type text --watch cliphist store"
             "${lib.getExe' pkgs.wl-clipboard "wl-paste"} --type image --watch cliphist store"
             "polkit-kde-agent"
+            "hyprpaper" # wallpaper daemon
           ];
 
           # Input configuration
@@ -171,12 +178,18 @@
             "$mainMod, Q, killactive"
             "$mainMod, W, togglefloating"
             "$mainMod, F, fullscreen"
+            "$mainMod, P, pseudo" # dwindle
+            "$mainMod, J, togglesplit" # dwindle
 
             # Applications
             "$mainMod, Return, exec, $term"
             "$mainMod, E, exec, $fileManager"
             "$mainMod, Space, exec, rofi -show drun"
             "$mainMod, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
+            
+            # System
+            "$mainMod SHIFT, Q, exec, swaync-client -t -sw" # toggle notification center
+            "$mainMod, L, exec, loginctl lock-session" # lock screen (if hyprlock is installed)
 
             # Workspaces
             "$mainMod, 1, workspace, 1"
@@ -207,6 +220,16 @@
             "$mainMod, right, movefocus, r"
             "$mainMod, up, movefocus, u"
             "$mainMod, down, movefocus, d"
+            
+            # Move windows
+            "$mainMod SHIFT, left, movewindow, l"
+            "$mainMod SHIFT, right, movewindow, r"
+            "$mainMod SHIFT, up, movewindow, u"
+            "$mainMod SHIFT, down, movewindow, d"
+            
+            # Switch workspaces with scroll
+            "$mainMod, mouse_down, workspace, e+1"
+            "$mainMod, mouse_up, workspace, e-1"
           ];
 
           # Volume and brightness keys
@@ -216,6 +239,24 @@
             ",XF86AudioLowerVolume, exec, pamixer -d 2"
             ",XF86AudioRaiseVolume, exec, pamixer -i 2"
             ",XF86AudioMute, exec, pamixer -t"
+          ];
+
+          # Window rules
+          windowrule = [
+            "float, ^(pavucontrol)$"
+            "float, ^(nm-connection-editor)$"
+            "float, ^(thunar)$"
+            "float, ^(file-roller)$"
+            "float, ^(ark)$"
+            "float, ^(nautilus)$"
+            "center, ^(pavucontrol)$"
+            
+            # Opacity rules for transparency
+            "opacity 0.9 0.9, ^(ghostty)$"
+            "opacity 0.9 0.9, ^(code)$"
+            "opacity 0.9 0.9, ^(vscode)$"
+            "opacity 1.0 1.0, ^(firefox)$"
+            "opacity 1.0 1.0, ^(vivaldi)$"
           ];
 
           # Mouse bindings
@@ -344,6 +385,21 @@
         enable = true;
         package = pkgs.rofi-wayland;
         theme = "gruvbox-dark";
+      };
+
+      # Hyprpaper configuration for wallpaper
+      services.hyprpaper = {
+        enable = true;
+        settings = {
+          preload = [
+            # You can set a wallpaper path here or use a solid color
+            # "~/Pictures/wallpaper.jpg"
+          ];
+          wallpaper = [
+            # Example: ",~/Pictures/wallpaper.jpg"
+            # For now, Hyprland will use a default background
+          ];
+        };
       };
     })
   ];
