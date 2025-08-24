@@ -31,6 +31,27 @@ This branch migrates from GNOME to Hyprland window manager using configuration i
 - Maintained existing GTK theming
 - Preserved existing applications and user packages
 
+## Hyprland Keybinds
+
+### Basic Controls
+- `SUPER + T`: Open terminal (kitty)
+- `SUPER + Q`: Close active window
+- `SUPER + M`: Exit Hyprland
+- `SUPER + E`: Open file manager (thunar)
+- `SUPER + V`: Toggle floating mode
+- `SUPER + R`: Open application launcher (rofi)
+- `SUPER + P`: Toggle pseudo-tiling
+- `SUPER + J`: Toggle window split
+
+### Window Navigation
+- `SUPER + Arrow Keys`: Move focus between windows
+- `SUPER + [1-9,0]`: Switch to workspace 1-10
+- `SUPER + SHIFT + [1-9,0]`: Move window to workspace 1-10
+
+### Mouse Controls
+- `SUPER + Left Click`: Move window
+- `SUPER + Right Click`: Resize window
+
 ## How to Use
 
 1. Switch to this branch:
@@ -58,6 +79,33 @@ sudo nixos-rebuild switch --flake .#BlitzWing
 - Edit `hosts/BlitzWing/config.nix` for system-level changes
 - Edit `home/san.nix` for user-specific Hyprland configuration
 - Add packages to `hosts/BlitzWing/packages-fonts.nix`
+
+## Post-Installation Steps
+
+After switching to Hyprland, you may want to:
+
+1. **Install JaKooLit's Hyprland Dots** for a complete desktop experience:
+   ```bash
+   # This will download and install the complete Hyprland configuration
+   git clone https://github.com/JaKooLit/Hyprland-Dots.git ~/Hyprland-Dots
+   cd ~/Hyprland-Dots
+   ./install.sh
+   ```
+
+2. **Configure GTK themes** using nwg-look:
+   ```bash
+   nwg-look
+   ```
+
+3. **Set up wallpapers** using swww:
+   ```bash
+   # Example: Set a wallpaper
+   swww img /path/to/your/wallpaper.jpg
+   ```
+
+4. **Customize Waybar** by editing `~/.config/waybar/config`
+
+5. **Configure additional applications** as needed
 
 ## Notes
 
