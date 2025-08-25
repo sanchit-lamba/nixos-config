@@ -34,6 +34,11 @@
       url = "github:winapps-org/winapps";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Added winapps as an input for system-level configuration
+    winapps = {
+      url = "github:winapps-org/winapps";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -65,6 +70,7 @@
       consoleKeymap = "us";
     };
 
+
     systems = [
       "x86_64-linux"
     ];
@@ -82,6 +88,7 @@
           ./hosts/BlitzWing/configuration.nix
         ];
       };
+
     };
     
     # Keep standalone home-manager configuration

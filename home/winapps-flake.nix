@@ -8,4 +8,5 @@
   
   # Add any user-specific winapps configuration here if needed
   # For now, this module is minimal as winapps is primarily system-level
+
 }
