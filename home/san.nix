@@ -60,28 +60,8 @@
   };
 
   home.packages = with pkgs; [
-    # Essential packages moved from system config
-    asusctl
-    p3x-onenote
-    newsflash
-    gh
-    git
-    rclone
-    fastfetch
-    mpv
-    kanata-with-cmd
-    neovim
-    ghostty
-    obs-studio
-    android-tools
-    thunderbird
-    refine
-    ocs-url
-    lm_sensors
-    gsettings-desktop-schemas
+    # Essential packages - duplicates removed, managed in host config
     glib
-    gtk-engine-murrine
-    gnome-themes-extra
   ];
 
   programs.firefox = {

@@ -1,15 +1,11 @@
-# Media applications
+# Media applications  
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    # Video players
+    # Video players (system-level)
     mpv
     haruna
     
-    # Streaming
+    # Streaming tools
     stremio
-    obs-studio
-    
-    # Other media
-    thunderbird
   ];
 }

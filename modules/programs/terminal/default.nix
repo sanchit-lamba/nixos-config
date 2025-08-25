@@ -1,9 +1,8 @@
 # Terminal applications
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    # Terminals
+    # Terminals (system-wide)
     gnome-terminal  # Default GNOME terminal
-    warp-terminal   # Modern terminal
-    ghostty         # GPU-accelerated terminal
+    warp-terminal   # Modern terminal alternative
   ];
 }

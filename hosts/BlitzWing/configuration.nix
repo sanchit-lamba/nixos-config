@@ -20,7 +20,7 @@
     ../../modules/desktop/${desktop}
     
     # Theme
-#    ../../modules/themes/gruvbox.nix
+    ../../modules/themes/gruvbox.nix
     
     # Programs - keeping current applications
     ../../modules/programs/browsers
@@ -54,17 +54,14 @@
   # Home-manager specific packages for this host
   home-manager.users.${username} = {
     home.packages = with pkgs; [
-      # User-specific packages from original home config
+      # User-specific packages from original home config moved here to avoid duplication
       asusctl
       p3x-onenote
       newsflash
-      gh
-      git
       rclone
       fastfetch
       mpv
       kanata-with-cmd
-      neovim
       ghostty
       obs-studio
       android-tools
