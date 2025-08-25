@@ -2,6 +2,8 @@
 
 A modular NixOS configuration based on [Sly-Harvey/NixOS](https://github.com/Sly-Harvey/NixOS) structure, restructured for my own prefrences and using my old config.
 
+#### [Deepwiki link for a better understanding of structure](https://deepwiki.com/sanchit-lamba/nixos-config)
+
 ## Structure
 
 ```
@@ -56,41 +58,11 @@ The system is configured for:
 
 ## Usage
 
-### Manual deployment
-#### Rebuilding the system
-```bash
-sudo nixos-rebuild switch --flake .#BlitzWing
-```
-
-#### Updating flake inputs
-```bash
-nix flake update
-```
-
-#### Testing configuration
-```bash
-sudo nixos-rebuild test --flake .#BlitzWing
-```
-
-#### Home Manager (standalone)
-```bash
-home-manager switch --flake .#san
-```
-
-## Adding New Modules
+## Adding new modules
 
 1. Create module in appropriate directory under `modules/`
 2. Add import to host configuration in `hosts/BlitzWing/configuration.nix`
 3. Configure module-specific settings
-
-## Migration from Original
-
-All original functionality has been preserved while gaining:
-- Better organization and maintainability
-- Easier hardware configuration management
-- Modular application management
-- Enhanced theming capabilities
-- Future extensibility for multiple hosts/users
 
 ## Credits
 
