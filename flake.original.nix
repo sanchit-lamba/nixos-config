@@ -1,6 +1,6 @@
 # /etc/nixos/flake.nix
 {
-  description = "This flake is a patchwork made by github.com/sanchit-lamba";
+  description = "Original NixOS flake configuration";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05"; # Or your desired nixpkgs branch
