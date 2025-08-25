@@ -1,7 +1,8 @@
-{ lib, pkgs, config, inputs, username ? "san", ... }:
+{ lib, pkgs, config, inputs, ... }:
 
 {
-  home.username = username;
+  home.username = "san";
+  home.homeDirectory = lib.mkForce "/home/san";
   home.stateVersion = "25.05";
   
   home.file.".mozilla/firefox/default/chrome/firefox-gnome-theme" = {
@@ -39,7 +40,7 @@
     };
   };
 
-  # GNOME dconf settings
+  # CLEANED UP: Single dconf.settings block with all settings
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       gtk-theme = "gruvbox-dark";
@@ -49,6 +50,7 @@
       gtk-application-prefer-dark-theme = true;
     };
     
+    # FIXED: Only one theme setting in wm/preferences
     "org/gnome/desktop/wm/preferences" = {
       theme = "gruvbox-dark";
     };
@@ -60,7 +62,25 @@
   };
 
   home.packages = with pkgs; [
-    # Essential packages - duplicates removed, managed in host config
+    asusctl
+    p3x-onenote
+    newsflash
+    gh
+    git
+    rclone
+    fastfetch
+    mpv
+    kanata-with-cmd
+    neovim
+    ghostty
+    obs-studio
+    android-tools
+    thunderbird
+    ulauncher
+    refine
+    ocs-url
+    lm_sensors
+    gsettings-desktop-schemas
     glib
   ];
 

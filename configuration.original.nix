@@ -10,7 +10,7 @@
       ./hardware-configuration.nix
     ];
 
-  # Bootloader.
+  ## Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   hardware.enableRedistributableFirmware = true;
@@ -23,14 +23,6 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-  #dconf
-  programs.dconf.enable = true;
-  #xdg 
-  xdg.portal = {
-  enable = true;
-  wlr.enable = true;
-  # extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-};
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
 
@@ -192,22 +184,8 @@
   virtualisation.docker.enable = true;
   programs.dconf.enable = true;
 
-# Ensure XDG desktop integration is enabled
 xdg.portal = {
   enable = true;
   wlr.enable = true;
 };
-
-# IMPORTANT: Add gruvbox-dark-gtk to system packages so it's available system-wide
-environment.systemPackages = with pkgs; [
-  # ... your existing packages (vscode, obsidian, etc.) ...
-  
-  # CRITICAL: Add gruvbox theme to system packages
-  gruvbox-dark-gtk
-  
-  # GTK theming support packages:
-  gsettings-desktop-schemas
-  gtk-engine-murrine
-  gnome-themes-extra
-];
 }
