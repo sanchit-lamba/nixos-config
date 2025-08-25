@@ -24,7 +24,7 @@
 
   users.users.${username} = {
     isNormalUser = true;
-    description = "Sanchit";
+    description = "User";
     extraGroups = [
       "adbusers"
       "uinput"

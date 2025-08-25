@@ -17,7 +17,7 @@ print_success() {
     echo -e "${GREEN}[SUCCESS]${NC} $1"
 }
 
-print_status "Deploying Home Manager configuration for user: san"
+print_status "Deploying Home Manager configuration for user: san (update this in the script)"
 
 # Check if flake.nix exists
 if [[ ! -f "flake.nix" ]]; then
