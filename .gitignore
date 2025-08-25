@@ -19,3 +19,6 @@ flake.lock.bak
 # OS generated files
 .DS_Store
 Thumbs.db
+
+# hardware config
+hardware-configuration.nix

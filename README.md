@@ -1,6 +1,6 @@
 # Sanchit's NixOS Configuration
 
-A modular NixOS configuration based on [Sly-Harvey/NixOS](https://github.com/Sly-Harvey/NixOS) structure, completely restructured for maintainability and modularity.
+A modular NixOS configuration based on [Sly-Harvey/NixOS](https://github.com/Sly-Harvey/NixOS) structure, restructured for my own prefrences and using my old config.
 
 ## Structure
 
@@ -9,7 +9,6 @@ A modular NixOS configuration based on [Sly-Harvey/NixOS](https://github.com/Sly
 ├── hosts/                    # Host-specific configurations
 │   ├── BlitzWing/           # Current system configuration
 │   │   ├── configuration.nix # Host-specific settings
-│   │   └── hardware-configuration.nix # Hardware scan results
 │   └── common.nix           # Shared configuration across all hosts
 ├── modules/                 # Modular system configurations
 │   ├── desktop/            # Desktop environments
@@ -56,12 +55,6 @@ The system is configured for:
 - **Timezone**: Asia/Kolkata
 
 ## Usage
-
-### Quick deployment
-```bash
-./install.sh          # Full system deployment with confirmation
-./home-manager.sh      # Home Manager only deployment
-```
 
 ### Manual deployment
 #### Rebuilding the system
