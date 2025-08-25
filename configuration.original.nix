@@ -73,7 +73,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.san = {
     isNormalUser = true;
-    description = "Sanchit";
+    description = "User";
     group = "users";
     extraGroups = ["adbusers" "uinput" "networkmanager" "wheel" "docker" "networkmanager"];
     packages = with pkgs; [

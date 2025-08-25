@@ -1,4 +1,4 @@
-# Sanchit's NixOS Configuration
+# Modular NixOS Configuration
 
 A modular NixOS configuration based on [Sly-Harvey/NixOS](https://github.com/Sly-Harvey/NixOS) structure, completely restructured for maintainability and modularity.
 
@@ -46,9 +46,28 @@ A modular NixOS configuration based on [Sly-Harvey/NixOS](https://github.com/Sly
 
 ## Configuration
 
-The system is configured for:
-- **User**: san
-- **Hostname**: BlitzWing
+**IMPORTANT**: Before using this configuration, you must customize it for your system:
+
+### Required Changes
+1. **Hardware Configuration**: Replace placeholder UUIDs in `hosts/BlitzWing/hardware-configuration.nix`
+   - Run `sudo blkid` to find your actual UUIDs
+   - Replace `REPLACE-WITH-YOUR-ROOT-UUID` with your root filesystem UUID
+   - Replace `REPLACE-WITH-YOUR-BOOT-UUID` with your boot partition UUID
+   - Replace `REPLACE-WITH-YOUR-SWAP-UUID` with your swap device UUID
+
+2. **User Configuration**: Update user settings in `flake.nix`:
+   - Change `username = "san"` to your desired username
+   - Change `hostname = "BlitzWing"` to your desired hostname
+   - Update timezone and locale settings as needed
+
+3. **System Settings**: Verify hardware-specific settings:
+   - GPU driver (`videoDriver = "amdgpu"`) - change to "nvidia" or "intel" as needed
+   - Review hardware modules in your host configuration
+
+### Current Configuration
+The system is currently configured for:
+- **User**: san (change this!)
+- **Hostname**: BlitzWing (change this!)
 - **Desktop**: GNOME with Wayland
 - **GPU**: AMD (amdgpu driver)
 - **Theme**: Gruvbox Dark
@@ -102,5 +121,4 @@ All original functionality has been preserved while gaining:
 ## Credits
 
 - Structure inspired by [Sly-Harvey/NixOS](https://github.com/Sly-Harvey/NixOS)
-- Original configuration by sanchit-lamba
-- Merged and restructured for optimal modularity
+- Merged and restructured for optimal modularity and public use

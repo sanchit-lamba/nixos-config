@@ -1,5 +1,5 @@
 {
-  description = "Sanchit's NixOS Configuration - Merged and Restructured";
+  description = "Modular NixOS Configuration - Restructured for Public Use";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
