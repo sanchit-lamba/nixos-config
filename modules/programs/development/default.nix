@@ -21,6 +21,5 @@
     #programs
     python3
     nodejs
-    npm
   ];
 }
