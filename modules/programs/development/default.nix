@@ -5,7 +5,7 @@
     vscode
     neovim
     code-cursor
-    
+        
     # Version control (git is in common.nix)
     gh
     lazygit
@@ -17,5 +17,10 @@
     
     # Development utilities
     kdiff3
+
+    #programs
+    python3
+    nodejs
+    npm
   ];
 }
