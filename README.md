@@ -22,6 +22,7 @@ A modular NixOS configuration based on [Sly-Harvey/NixOS](https://github.com/Sly
 │   ├── programs/           # Application modules
 │   │   ├── browsers/       # Web browsers
 │   │   ├── development/    # Development tools
+│   │   ├── gaming/         # Gaming platforms and optimizations
 │   │   ├── media/          # Media applications
 │   │   ├── shell/          # Shell configurations
 │   │   ├── terminal/       # Terminal applications
@@ -40,6 +41,7 @@ A modular NixOS configuration based on [Sly-Harvey/NixOS](https://github.com/Sly
 - **Configurable Settings**: System settings defined in `flake.nix` for easy customization
 - **Hardware Abstraction**: GPU drivers (AMD/NVIDIA/Intel) and hardware configurations are modularized
 - **Desktop Environment Support**: Currently GNOME, with Hyprland ready for future use
+- **Gaming Support**: Full gaming setup with Steam, Lutris, GameMode, and performance optimizations
 - **Enhanced Theming**: Gruvbox dark theme with proper GTK/Qt integration
 - **Modern NixOS Practices**: Uses flakes, home-manager, and latest NixOS features
 - **Easy Deployment**: Automated scripts for system and home-manager deployment
