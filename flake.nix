@@ -29,12 +29,13 @@
     
     nur.url = "github:nix-community/NUR";
     
-    # Windows application support
-    winapps = {
-      url = "github:winapps-org/winapps";
+    # Gaming support
+    nix-gaming = {
+      url = "github:fufexan/nix-gaming";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # Added winapps as an input for system-level configuration
+    
+    # Windows application support
     winapps = {
       url = "github:winapps-org/winapps";
       inputs.nixpkgs.follows = "nixpkgs";

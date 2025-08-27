@@ -25,6 +25,7 @@
     # Programs - keeping current applications
     ../../modules/programs/browsers
     ../../modules/programs/development
+    ../../modules/programs/gaming
     ../../modules/programs/media
     ../../modules/programs/utilities
     ../../modules/programs/terminal
