@@ -12,8 +12,8 @@
   gtk = {
     enable = true;
     theme = {
-      package = pkgs.gruvbox-dark-gtk;
-      name = "gruvbox-dark";
+      package = pkgs.gruvbox-gtk-theme;
+      name = "Gruvbox-Dark-BL-LB";
     };
 
     iconTheme = {
@@ -25,44 +25,32 @@
       package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Classic";
     };
-
-    gtk3.extraConfig = {
-      Settings = ''
-        gtk-application-prefer-dark-theme=1
-      '';
     };
 
-    gtk4.extraConfig = {
-      Settings = ''
-        gtk-application-prefer-dark-theme=1
-      '';
-    };
-  };
 
   # GNOME dconf settings
-  dconf.settings = {
+   dconf.settings = {
     "org/gnome/desktop/interface" = {
-      gtk-theme = "gruvbox-dark";
+      gtk-theme = "Gruvbox-Dark-BL-LB"; # Change this to the new theme name
       icon-theme = "Gruvbox-Plus-Dark";
       cursor-theme = "Bibata-Modern-Classic";
       color-scheme = "prefer-dark";
       gtk-application-prefer-dark-theme = true;
     };
-    
     "org/gnome/desktop/wm/preferences" = {
-      theme = "gruvbox-dark";
+      theme = "Gruvbox-Dark-BL-LB"; # Also update this for consistency
     };
   };
 
+
   home.sessionVariables = {
     GTK_THEME = "gruvbox-dark";
-    QT_STYLE_OVERRIDE = "adwaita-dark";
+    QT_STYLE_OVERRIDE = "gnome";
   };
 
   home.packages = with pkgs; [
-    # Essential packages - duplicates removed, managed in host config
-    glib
-  ];
+  glib
+  qgnomeplatform ];
 
   programs.firefox = {
     enable = true;

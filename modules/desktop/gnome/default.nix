@@ -2,28 +2,32 @@
   imports = [
     ../wayland.nix
   ];
-  
+
   services.xserver = {
     enable = true;
     desktopManager.gnome = {
       enable = true;
-      # HiDPI scaling support
+      # HiDPI scaling and system-wide theme settings
       extraGSettingsOverrides = ''
+        [org.gnome.desktop.interface]
+        gtk-theme='Gruvbox-Dark-BL-LB'
+        icon-theme='Gruvbox-Plus-Dark'
         [org.gnome.mutter]
         experimental-features=['scale-monitor-framebuffer']
       '';
-      extraGSettingsOverridePackages = [ pkgs.mutter ];
+      extraGSettingsOverridePackages = [ pkgs.mutter pkgs.gsettings-desktop-schemas ];
     };
     displayManager.gdm = {
       enable = true;
       wayland = true;
     };
   };
-  
+
   services.gnome.gnome-initial-setup.enable = false;
   services.gnome.games.enable = false;
 
-  environment.gnome.excludePackages = with pkgs; [
+  environment.gnome.excludePackages = with pkgs;
+  [
     gnome-tour
     gnome-user-docs
     gnome-maps
