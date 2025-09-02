@@ -11,8 +11,17 @@
       extraGSettingsOverrides = ''
         [org.gnome.mutter]
         experimental-features=['scale-monitor-framebuffer']
+        
+        [org.gnome.desktop.interface]
+        gtk-theme='gruvbox-dark'
+        icon-theme='Gruvbox-Plus-Dark'
+        cursor-theme='Bibata-Modern-Classic'
+        color-scheme='prefer-dark'
+        
+        [org.gnome.desktop.wm.preferences]
+        theme='gruvbox-dark'
       '';
-      extraGSettingsOverridePackages = [ pkgs.mutter ];
+      extraGSettingsOverridePackages = [ pkgs.mutter pkgs.gnome-settings-daemon ];
     };
     displayManager.gdm = {
       enable = true;
@@ -38,5 +47,9 @@
     gnomeExtensions.tray-icons-reloaded
     gnomeExtensions.vitals
     gnome-tweaks
+    
+    # Additional GNOME theming tools
+    dconf-editor
+    gnome-settings-daemon
   ];
 }
