@@ -9,6 +9,33 @@
     recursive = true;
   };
 
+  # Create GTK configuration files to ensure proper theming
+  home.file.".gtkrc-2.0".text = ''
+    gtk-theme-name="gruvbox-dark"
+    gtk-icon-theme-name="Gruvbox-Plus-Dark"
+    gtk-cursor-theme-name="Bibata-Modern-Classic"
+    gtk-cursor-theme-size=24
+    gtk-application-prefer-dark-theme=1
+  '';
+
+  home.file.".config/gtk-3.0/settings.ini".text = ''
+    [Settings]
+    gtk-theme-name=gruvbox-dark
+    gtk-icon-theme-name=Gruvbox-Plus-Dark
+    gtk-cursor-theme-name=Bibata-Modern-Classic
+    gtk-cursor-theme-size=24
+    gtk-application-prefer-dark-theme=1
+  '';
+
+  home.file.".config/gtk-4.0/settings.ini".text = ''
+    [Settings]
+    gtk-theme-name=gruvbox-dark
+    gtk-icon-theme-name=Gruvbox-Plus-Dark
+    gtk-cursor-theme-name=Bibata-Modern-Classic
+    gtk-cursor-theme-size=24
+    gtk-application-prefer-dark-theme=1
+  '';
+
   gtk = {
     enable = true;
     theme = {
