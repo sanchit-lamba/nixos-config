@@ -49,6 +49,7 @@
     haruna
     wayland-utils
     wl-clipboard
+    beeper
   ];
 
   # Home-manager specific packages for this host

@@ -20,6 +20,4 @@ flake.lock.bak
 .DS_Store
 Thumbs.db
 
-# hardware config
-hardware-configuration.nix
 

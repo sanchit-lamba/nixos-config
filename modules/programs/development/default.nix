@@ -17,5 +17,9 @@
     
     # Development utilities
     kdiff3
+
+    # Runtimes
+    nodejs_24.out
+    python3
   ];
 }
