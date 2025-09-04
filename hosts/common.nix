@@ -177,6 +177,7 @@
     EDITOR = "nvim";
     BROWSER = browser;
     TERMINAL = terminal;
+    NIXOS_OZONE_WL = "1";
   };
 
   # Hardware support

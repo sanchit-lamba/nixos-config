@@ -3,6 +3,8 @@
 A modular NixOS configuration based on [Sly-Harvey/NixOS](https://github.com/Sly-Harvey/NixOS) structure, restructured for my own prefrences and using my old config.
 
 #### [Deepwiki link for a better understanding of structure](https://deepwiki.com/sanchit-lamba/nixos-config)
+## Screen 🧢
+[fix ur internet pls](screen_cap.png)
 
 ## Structure
 

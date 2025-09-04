@@ -10,6 +10,7 @@ let
     "vscode"   = "code";
     "obsidian" = "obsidian";
     "stremio"  = "stremio";
+    "beeper"   = "beeper";
     # Add any other system-level electron apps from your configuration.nix here
   };
 
@@ -23,8 +24,7 @@ in
           pkg.overrideAttrs (oldAttrs: {
             postFixup = (oldAttrs.postFixup or "") + ''
               wrapProgram $out/bin/${binName} \
-                --add-flags "--enable-features=UseOzonePlatform" \
-                --add-flags "--ozone-platform-hint=auto"
+                --add-flags "" 
             '';
           });
       in
