@@ -16,6 +16,4 @@ theming:
 
 Dots(.) :
 	ghosttty
-
-
-
+	neovim

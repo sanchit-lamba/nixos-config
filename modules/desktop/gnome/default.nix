@@ -7,15 +7,12 @@
     enable = true;
     desktopManager.gnome = {
       enable = true;
-      # HiDPI scaling and system-wide theme settings
+      # should technically be in the host specific config but realistically i'll always have a hidpi display
       extraGSettingsOverrides = ''
-        [org.gnome.desktop.interface]
-        gtk-theme='Gruvbox-Dark-BL-LB'
-        icon-theme='Gruvbox-Plus-Dark'
         [org.gnome.mutter]
         experimental-features=['scale-monitor-framebuffer']
       '';
-      extraGSettingsOverridePackages = [ pkgs.mutter pkgs.gsettings-desktop-schemas ];
+      extraGSettingsOverridePackages = [pkgs.mutter pkgs.gsettings-desktop-schemas];
     };
     displayManager.gdm = {
       enable = true;
@@ -26,14 +23,13 @@
   services.gnome.gnome-initial-setup.enable = false;
   services.gnome.games.enable = false;
 
-  environment.gnome.excludePackages = with pkgs;
-  [
+  environment.gnome.excludePackages = with pkgs; [
     gnome-tour
     gnome-user-docs
     gnome-maps
     gnome-music
   ];
-  
+
   environment.systemPackages = with pkgs; [
     # GNOME Extensions
     gnomeExtensions.appindicator
@@ -42,5 +38,17 @@
     gnomeExtensions.tray-icons-reloaded
     gnomeExtensions.vitals
     gnome-tweaks
+    gnome-calculator
+    gnome-characters
+    gnome-disk-utility
+    gnome-system-monitor
+    file-roller
+    gnome-text-editor
+
+    # GNOME only GTK packages
+    newsflash
+    refine
+    ocs-url
+    lm_sensors
   ];
 }

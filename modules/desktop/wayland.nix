@@ -1,38 +1,35 @@
-# /etc/nixos/modules/wayland-apps.nix
-{ lib, pkgs, ... }:
-
-let
-  # --- Configuration ---
-  # List of system-level applications to patch for native Wayland support.
-  # The key is the package name from nixpkgs, and the value is the name of its executable binary.
+{
+  lib,
+  pkgs,
+  ...
+}: let
   waylandAppsMap = {
     # Package Name = Binary Name
-    "vscode"   = "code";
+    "vscode" = "code";
     "obsidian" = "obsidian";
-    "stremio"  = "stremio";
-    "beeper"   = "beeper";
-    # Add any other system-level electron apps from your configuration.nix here
+    "stremio" = "stremio";
+    "beeper" = "beeper";
   };
-
-in
-{
-  # This overlay applies the Wayland flags to the packages
+in {
   nixpkgs.overlays = [
-    (final: prev:
-      let
+    (
+      final: prev: let
         wrapElectronApp = pkg: binName:
           pkg.overrideAttrs (oldAttrs: {
-            postFixup = (oldAttrs.postFixup or "") + ''
-              wrapProgram $out/bin/${binName} \
-                --add-flags "" 
-            '';
+            postFixup =
+              (oldAttrs.postFixup or "")
+              + ''
+                wrapProgram $out/bin/${binName} \
+                  --add-flags ""
+              '';
           });
       in
-      # Use lib.mapAttrs to apply the wrapper to each app in our map
-      lib.mapAttrs' (pkgName: binName:
-        lib.nameValuePair pkgName (wrapElectronApp prev.${pkgName} binName)
-      ) waylandAppsMap
+        # Use lib.mapAttrs to apply the wrapper to each app in our map
+        lib.mapAttrs' (
+          pkgName: binName:
+            lib.nameValuePair pkgName (wrapElectronApp prev.${pkgName} binName)
+        )
+        waylandAppsMap
     )
   ];
 }
-

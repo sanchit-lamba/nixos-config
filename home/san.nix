@@ -1,9 +1,14 @@
-{ lib, pkgs, config, inputs, username ? "san", ... }:
-
 {
+  lib,
+  pkgs,
+  config,
+  inputs,
+  username ? "san",
+  ...
+}: {
   home.username = username;
   home.stateVersion = "25.05";
-  
+
   home.file.".mozilla/firefox/default/chrome/firefox-gnome-theme" = {
     source = inputs.firefox-gnome-theme;
     recursive = true;
@@ -20,16 +25,15 @@
       package = pkgs.gruvbox-plus-icons;
       name = "Gruvbox-Plus-Dark";
     };
-    
+
     cursorTheme = {
       package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Classic";
     };
-    };
-
+  };
 
   # GNOME dconf settings
-   dconf.settings = {
+  dconf.settings = {
     "org/gnome/desktop/interface" = {
       gtk-theme = "Gruvbox-Dark-BL-LB"; # Change this to the new theme name
       icon-theme = "Gruvbox-Plus-Dark";
@@ -42,19 +46,19 @@
     };
   };
 
-
   home.sessionVariables = {
     GTK_THEME = "gruvbox-dark";
     QT_STYLE_OVERRIDE = "gnome";
   };
 
   home.packages = with pkgs; [
-  glib
-  qgnomeplatform ];
+    glib
+    qgnomeplatform
+  ];
 
   programs.firefox = {
     enable = true;
-    nativeMessagingHosts = [ pkgs.tridactyl-native ];
+    nativeMessagingHosts = [pkgs.tridactyl-native];
     profiles.default = {
       name = "default";
       settings = {

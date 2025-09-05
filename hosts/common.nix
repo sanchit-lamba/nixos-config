@@ -44,8 +44,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "hm-bak";
-    extraSpecialArgs = { inherit inputs; } // { inherit username browser terminal; };
-    users.${username} = self.san-module;
+    extraSpecialArgs = {inherit inputs;} // {inherit terminal;};
   };
 
   # Filesystems support
@@ -115,8 +114,18 @@
     # Keep existing firewall rules for KDE Connect
     firewall = {
       enable = true;
-      allowedTCPPortRanges = [ {from = 1714; to = 1764;} ];
-      allowedUDPPortRanges = [ {from = 1714; to = 1764;} ];
+      allowedTCPPortRanges = [
+        {
+          from = 1714;
+          to = 1764;
+        }
+      ];
+      allowedUDPPortRanges = [
+        {
+          from = 1714;
+          to = 1764;
+        }
+      ];
     };
   };
 
@@ -189,7 +198,7 @@
     killall
     lm_sensors
     jq
-    git  # Keep git as it's essential for system operations
+    git # Keep git as it's essential for system operations
     wget
     curl
     unzip

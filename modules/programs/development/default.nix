@@ -21,5 +21,8 @@
     # Runtimes
     nodejs_24.out
     python3
+
+    # Nix Specific
+    alejandra
   ];
 }

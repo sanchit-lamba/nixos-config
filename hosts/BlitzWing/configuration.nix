@@ -15,13 +15,13 @@
     ../../modules/hardware/drives
 
     ../common.nix
-    
+
     # Desktop environment
     ../../modules/desktop/${desktop}
-    
+
     # Theme
     ../../modules/themes/gruvbox.nix
-    
+
     # Programs - keeping current applications
     ../../modules/programs/browsers
     ../../modules/programs/development
@@ -34,47 +34,11 @@
 
   # Additional packages specific to this system
   environment.systemPackages = with pkgs; [
-    # GNOME applications (additional to base GNOME)
-    gnome-calculator
-    gnome-characters
-    gnome-color-manager
-    gnome-disk-utility
-    gnome-system-monitor
-    file-roller
-    gnome-text-editor
-    
-    # Utilities specific to this system
-    kdiff3
-    hardinfo2
-    haruna
-    wayland-utils
-    wl-clipboard
-    beeper
+    asusctl
   ];
 
-  # Home-manager specific packages for this host
   home-manager.users.${username} = {
-    home.packages = with pkgs; [
-      # User-specific packages from original home config moved here to avoid duplication
-      asusctl
-      p3x-onenote
-      newsflash
-      rclone
-      fastfetch
-      mpv
-      kanata-with-cmd
-      ghostty
-      obs-studio
-      android-tools
-      thunderbird
-      refine
-      ocs-url
-      lm_sensors
-    ];
-  };
-
-  # System services specific to this machine
-  services = {
-    # Keep existing service configurations
+    imports = [../../home/san.nix];
+    _module.args.username = username;
   };
 }
