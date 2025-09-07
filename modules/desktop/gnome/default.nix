@@ -1,8 +1,4 @@
 {pkgs, ...}: {
-  imports = [
-    ../wayland.nix
-  ];
-
   services.xserver = {
     enable = true;
     desktopManager.gnome = {

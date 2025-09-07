@@ -63,6 +63,7 @@
       kbdVariant = "";
       consoleKeymap = "us";
     };
+    pkgs = nixpkgs.legacyPackages.x86_64-linux;
 
     systems = [
       "x86_64-linux"
@@ -70,7 +71,10 @@
 
     forAllSystems = nixpkgs.lib.genAttrs systems;
   in {
-    overlays = import ./overlays {inherit inputs settings;};
+    overlays = import ./overlays {
+      inherit inputs settings pkgs;
+      lib = nixpkgs.lib;
+    };
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
     "${settings.username}-module" = ./home / "${settings.username}.nix";
     nixosConfigurations = {
