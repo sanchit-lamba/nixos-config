@@ -6,7 +6,7 @@
     haruna
     
     # Streaming tools
-    stremio
+    
   ];
 }
 
