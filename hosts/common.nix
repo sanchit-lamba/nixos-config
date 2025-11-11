@@ -202,6 +202,8 @@
     wget
     curl
     unzip
+    flatpak
+    portal
   ];
 
   # Programs that need special configuration
@@ -217,6 +219,7 @@
   services = {
     asusd.enable = true;
     kanata.enable = true;
+    flatpak.enable= true;
   };
 
   # Virtualization

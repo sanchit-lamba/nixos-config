@@ -6,7 +6,6 @@
     haruna
     
     # Streaming tools
-    
   ];
 }
 

@@ -5,6 +5,8 @@
     mpv
     kanata-with-cmd
     fastfetch
+    libreoffice
     android-tools
+    obsidian
   ];
 }
