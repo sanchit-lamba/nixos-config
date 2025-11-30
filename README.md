@@ -52,7 +52,7 @@ A modular NixOS configuration based on [Sly-Harvey/NixOS](https://github.com/Sly
 The system is configured for:
 - **User**: san
 - **Hostname**: BlitzWing
-- **Desktop**: GNOME with Wayland
+- **Desktop**: Hyprland With en4's config 
 - **GPU**: AMD (amdgpu driver)
 - **Theme**: Gruvbox Dark
 - **Locale**: en_IN (India)
