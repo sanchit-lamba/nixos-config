@@ -8,7 +8,7 @@
 
   # Required services for illogical-impulse / QuickShell
   services.geoclue2.enable = true;  # For QtPositioning
-
+  services.upower.enable = true;
   # Additional packages for Hyprland
   environment.systemPackages = with pkgs; [
     # Wayland utilities
@@ -27,13 +27,22 @@
     rubik
     nerd-fonts.ubuntu
   ];
-
-  # XDG portal for Hyprland
-  xdg.portal = {
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+  };
+xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-hyprland
-      xdg-desktop-portal-gtk
+      kdePackages.xdg-desktop-portal-kde
     ];
+    
+    # REQUIRED: Tells NixOS to use the KDE portal by default
+    config = {
+      common = {
+        default = [ "kde" ];
+      };
+    };
   };
 }

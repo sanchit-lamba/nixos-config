@@ -57,7 +57,7 @@
       hostname = "BlitzWing";
 
       # Desktop preferences
-      desktop = "gnome";
+      desktop = "hyprland";
       browser = "firefox";
       terminal = "ghostty";
       editor = "vscode";

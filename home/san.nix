@@ -17,16 +17,34 @@
     source = inputs.firefox-gnome-theme;
     recursive = true;
   };
+  qt.enable = true;
+  qt.platformTheme.name = lib.mkForce "qtct";
+  qt.style.name = lib.mkForce "kvantum";
+  # GNOME dconf settings
+  home.packages = with pkgs; [
+    glib
+    fastfetch
+    kdePackages.qt6ct 
+    libsForQt5.qt5ct
+    kdePackages.dolphin
+    kdePackages.qtstyleplugin-kvantum # The engine
+    libsForQt5.qtstyleplugin-kvantum
+    gruvbox-kvantum                   # The actual Theme!
+    kdePackages.qtsvg    # Qt6 SVG support
+    libsForQt5.qt5.qtsvg # Qt5 SVG support
+    adwaita-icon-theme   # Essential fallback icons
+  ];
 
-  gtk = {
+    gtk = {
     enable = true;
     theme = {
-      package = pkgs.gruvbox-gtk-theme;
-      name = "Gruvbox-Dark-BL-LB";
+      package = pkgs.gruvbox-dark-gtk;
+      name = "gruvbox-dark";
     };
 
     iconTheme = {
-      package = pkgs.gruvbox-plus-icons;
+      # lib.hiPrio forces this package to "win" the conflict against Breeze
+      package = lib.hiPrio pkgs.gruvbox-plus-icons;
       name = "Gruvbox-Plus-Dark";
     };
 
@@ -35,30 +53,13 @@
       name = "Bibata-Modern-Classic";
     };
   };
-
-  # GNOME dconf settings
-  dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      gtk-theme = "Gruvbox-Dark-BL-LB"; # Change this to the new theme name
-      icon-theme = "Gruvbox-Plus-Dark";
-      cursor-theme = "Bibata-Modern-Classic";
-      color-scheme = "prefer-dark";
-      gtk-application-prefer-dark-theme = true;
-    };
-    "org/gnome/desktop/wm/preferences" = {
-      theme = "Gruvbox-Dark-BL-LB"; # Also update this for consistency
-    };
-  };
-
   home.sessionVariables = {
-    GTK_THEME = "gruvbox-dark";
-    QT_STYLE_OVERRIDE = "gnome";
+    XCURSOR_THEME = "Bibata-Modern-Classic";
+    XCURSOR_SIZE = "24";
+    QT_STYLE_OVERRIDE = lib.mkForce "kvantum";  
+    QT_QPA_PLATFORMTHEME = lib.mkForce "qt6ct";
+    GTK_USE_PORTAL = "1";
   };
-
-  home.packages = with pkgs; [
-    glib
-    qgnomeplatform
-  ];
 
   programs.firefox = {
     enable = true;
