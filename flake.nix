@@ -34,12 +34,6 @@
       url = "github:winapps-org/winapps";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Illogical Impulse - end-4's Hyprland dotfiles with QuickShell
-    illogical-flake = {
-      url = "github:soymou/illogical-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = {
@@ -97,7 +91,6 @@
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
       extraSpecialArgs = {inherit inputs;} // settings;
       modules = [
-        inputs.illogical-flake.homeManagerModules.default
         self."${settings.username}-module"
       ];
     };

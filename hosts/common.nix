@@ -45,9 +45,6 @@
     useUserPackages = true;
     backupFileExtension = "hm-bak";
     extraSpecialArgs = {inherit inputs;} // {inherit terminal;};
-    sharedModules = [
-      inputs.illogical-flake.homeManagerModules.default
-    ];
   };
 
   # Filesystems support
