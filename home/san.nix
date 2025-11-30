@@ -6,6 +6,10 @@
   username ? "san",
   ...
 }: {
+  imports = [
+    ./illogical-impulse.nix
+  ];
+
   home.username = username;
   home.stateVersion = "25.05";
 

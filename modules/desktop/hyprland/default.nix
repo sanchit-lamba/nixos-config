@@ -6,6 +6,9 @@
     # enableNvidiaPatches = true;  # Enable if using NVIDIA
   };
 
+  # Required services for illogical-impulse / QuickShell
+  services.geoclue2.enable = true;  # For QtPositioning
+
   # Additional packages for Hyprland
   environment.systemPackages = with pkgs; [
     # Wayland utilities
@@ -17,6 +20,12 @@
     slurp           # Screen selection utility
     swaylock        # Screen locker
     mako            # Notification daemon
+  ];
+
+  # Recommended fonts for illogical-impulse
+  fonts.packages = with pkgs; [
+    rubik
+    nerd-fonts.ubuntu
   ];
 
   # XDG portal for Hyprland
