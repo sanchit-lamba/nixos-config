@@ -73,7 +73,6 @@
     kdePackages.polkit-kde-agent-1
     kdePackages.powerdevil
     kdePackages.sddm-kcm
-    kdePackages.xdg-desktop-portal-kde
   ];
 
   # XDG portal for KDE
