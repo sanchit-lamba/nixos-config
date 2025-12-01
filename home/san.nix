@@ -9,11 +9,6 @@
   home.username = username;
   home.stateVersion = "25.05";
 
-  home.file.".mozilla/firefox/default/chrome/firefox-gnome-theme" = {
-    source = inputs.firefox-gnome-theme;
-    recursive = true;
-  };
-
   gtk = {
     enable = true;
     theme = {
@@ -32,28 +27,12 @@
     };
   };
 
-  # GNOME dconf settings
-  dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      gtk-theme = "Gruvbox-Dark-BL-LB"; # Change this to the new theme name
-      icon-theme = "Gruvbox-Plus-Dark";
-      cursor-theme = "Bibata-Modern-Classic";
-      color-scheme = "prefer-dark";
-      gtk-application-prefer-dark-theme = true;
-    };
-    "org/gnome/desktop/wm/preferences" = {
-      theme = "Gruvbox-Dark-BL-LB"; # Also update this for consistency
-    };
-  };
-
   home.sessionVariables = {
     GTK_THEME = "gruvbox-dark";
-    QT_STYLE_OVERRIDE = "gnome";
   };
 
   home.packages = with pkgs; [
     glib
-    qgnomeplatform
   ];
 
   programs.firefox = {
@@ -67,10 +46,6 @@
         "browser.tabs.drawInTitlebar" = true;
         "svg.context-properties.content.enabled" = true;
       };
-      userChrome = ''
-        @import "firefox-gnome-theme/userChrome.css";
-        @import "firefox-gnome-theme/theme/colors/dark.css";
-      '';
     };
   };
 
