@@ -1,0 +1,19 @@
+# Non-Declarative shit
+gnome shortcuts : 
+	sup+q = quit
+	also the window navigation and workspace navigation
+	sup+f = file explorer
+
+gnome extentions :
+	blur-my-shell
+	media-controls
+	window-tile-is-back
+	user-themes
+	open-bar
+
+theming: 
+	decide on a comprehensive theme and make changes throughout
+
+Dots(.) :
+	ghosttty
+	neovim
