@@ -6,6 +6,10 @@
   username ? "san",
   ...
 }: {
+  imports = [
+    ./illogical-impulse.nix
+  ];
+
   home.username = username;
   home.stateVersion = "25.05";
 
@@ -48,7 +52,8 @@
 
   home.sessionVariables = {
     GTK_THEME = "gruvbox-dark";
-    QT_STYLE_OVERRIDE = "gnome";
+    # Use lib.mkForce to override the value set by illogical-flake
+    QT_STYLE_OVERRIDE = lib.mkForce "gnome";
   };
 
   home.packages = with pkgs; [
