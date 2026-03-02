@@ -36,7 +36,7 @@
       get_sessions() {
         curl -s "$PLEX_URL/status/sessions" \
           -H "X-Plex-Token: $PLEX_TOKEN" \
-          -H "Accept: application/json" 2>/dev/null || echo "{}"
+          -H "Accept: application/json" || echo "{}"
       }
 
       prefetch_file() {
@@ -53,7 +53,7 @@
         echo "Prefetching: $src -> $dst"
         mkdir -p "$(dirname "$dst")"
 
-        if rclone copy --config "$RCLONE_CONFIG" "zurg:$src" "$(dirname "$dst")" --progress 2>/dev/null; then
+        if rclone copy --config "$RCLONE_CONFIG" "zurg:$src" "$(dirname "$dst")" --progress; then
           echo "Cached: $dst"
         else
           echo "Failed to cache: $src"
@@ -67,7 +67,7 @@
 
         # Get all episodes in the season
         episodes=$(curl -s "$PLEX_URL$show_key?X-Plex-Token=$PLEX_TOKEN" \
-          -H "Accept: application/json" 2>/dev/null)
+          -H "Accept: application/json")
 
         echo "$episodes" | jq -r --argjson idx "$current_episode_index" \
           --argjson count "$PREFETCH_EPISODES" \
@@ -132,6 +132,7 @@ in {
   systemd.tmpfiles.rules = [
     "d /var/lib/plex-prefetch 0750 root root -"
     "d /var/lib/plex-prefetch/locks 0750 root root -"
+    "f /var/lib/plex-prefetch/token 0600 root root -"
   ];
 
   systemd.services.plex-prefetch = {
@@ -155,6 +156,8 @@ in {
     serviceConfig = {
       Type = "oneshot";
       ExecStart = "${pkgs.findutils}/bin/find /media/cache -type f -mtime +7 -delete";
+      User = "plex";
+      Group = "plex";
     };
   };
 

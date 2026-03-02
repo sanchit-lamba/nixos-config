@@ -34,7 +34,7 @@
     meta = with pkgs.lib; {
       description = "Open source reimplementation of Captain Claw";
       homepage = "https://github.com/pjasicek/OpenClaw";
-      license = licenses.gpl3;
+      license = licenses.gpl3Plus;
       platforms = platforms.linux;
     };
   };

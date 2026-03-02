@@ -17,7 +17,7 @@
 
     src = pkgs.fetchzip {
       url = "https://github.com/debridmediamanager/zurg-testing/releases/download/v${version}/zurg-v${version}-linux-amd64.zip";
-      hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="; # Replace with actual hash on first build
+      hash = lib.fakeHash; # Replace with actual hash on first build: nix-prefetch-url --unpack <url>
     };
 
     installPhase = ''
@@ -27,21 +27,31 @@
     '';
   };
 in {
-  # Zurg configuration
-  environment.etc."zurg/config.yml".text = ''
-    # Zurg configuration for Real-Debrid
-    # IMPORTANT: Update the token below with your Real-Debrid API token
-    # Get your token at: https://real-debrid.com/apitoken
-    token: YOUR_REALDEBRID_API_TOKEN
-    host: "0.0.0.0"
-    port: 9999
-    concurrent_workers: 32
-    check_for_changes_every_secs: 10
-    retain_rd_torrent_name: true
-    auto_delete_rar_torrents: true
-    on_library_update: |
-      echo "Library updated"
-  '';
+  # Static user for zurg service
+  users.users.zurg = {
+    isSystemUser = true;
+    group = "zurg";
+    home = "/var/lib/zurg";
+  };
+  users.groups.zurg = {};
+
+  # Zurg configuration template
+  # The actual config with the API token should be placed at /etc/zurg/config.yml
+  # with restricted permissions (0600) after deployment.
+  # Get your token at: https://real-debrid.com/apitoken
+  #
+  # Example config.yml:
+  #   token: YOUR_REALDEBRID_API_TOKEN
+  #   host: "0.0.0.0"
+  #   port: 9999
+  #   concurrent_workers: 32
+  #   check_for_changes_every_secs: 10
+  #   retain_rd_torrent_name: true
+  #   auto_delete_rar_torrents: true
+
+  systemd.tmpfiles.rules = [
+    "d /etc/zurg 0750 zurg zurg -"
+  ];
 
   # rclone config for mounting zurg's WebDAV
   environment.etc."rclone/rclone.conf".text = ''
@@ -63,7 +73,8 @@ in {
       ExecStart = "${zurg}/bin/zurg --config /etc/zurg/config.yml";
       Restart = "always";
       RestartSec = 5;
-      DynamicUser = true;
+      User = "zurg";
+      Group = "zurg";
       StateDirectory = "zurg";
       CacheDirectory = "zurg";
     };
