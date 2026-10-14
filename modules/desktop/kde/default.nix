@@ -7,7 +7,7 @@
   services.desktopManager.plasma6.enable = true;
 
   # Enable SDDM display manager
-  services.displayManager.plasma-login-manager= {
+  services.displayManager.plasma6-login-manager= {
     enable = true;
   };
 
