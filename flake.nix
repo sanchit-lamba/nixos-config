@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -15,11 +15,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Original inputs
-        firefox-gnome-theme = {
-            url = "github:rafaelmardojai/firefox-gnome-theme";
-          flake = false;
-        };
+#    # Original inputs
+#        firefox-gnome-theme = {
+#            url = "github:rafaelmardojai/firefox-gnome-theme";
+#          flake = false;
+#        };
 
     # Optional advanced inputs for future use
     spicetify-nix = {
@@ -70,10 +70,11 @@
       consoleKeymap = "us";
     };
 
-    # System settings for AstroTrain (headless homeserver)
-    astroTrainSettings = {
+
+    # System settings for NiwasSewak (headless homeserver)
+    niwasSewakSettings = {
       username = "san";
-      hostname = "AstroTrain";
+      hostname = "NiwasSewak";
 
       # Headless - no desktop environment
       desktop = "none";
@@ -111,11 +112,11 @@
         ];
       };
 
-      AstroTrain = nixpkgs.lib.nixosSystem {
+      NiwasSewak = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = {inherit self inputs outputs;} // astroTrainSettings;
+        specialArgs = {inherit self inputs outputs;} // niwasSewakSettings;
         modules = [
-          ./hosts/AstroTrain/configuration.nix
+          ./hosts/NiwasSewak/configuration.nix
         ];
       };
     };

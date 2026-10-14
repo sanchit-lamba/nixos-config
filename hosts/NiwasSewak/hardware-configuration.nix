@@ -1,4 +1,4 @@
-# Placeholder hardware configuration for AstroTrain
+# Placeholder hardware configuration for NiwasSewak - Headless homeserver
 # Regenerate on the actual laptop with: nixos-generate-config --show-hardware-config
 {
   config,
