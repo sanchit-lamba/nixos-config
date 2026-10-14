@@ -40,7 +40,7 @@
 #      url = "github:pjasicek/OpenClaw";
 #      flake = false;
 #    };
-#  };
+  };
 
   outputs = {
     self,

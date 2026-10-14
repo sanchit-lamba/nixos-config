@@ -17,3 +17,8 @@ theming:
 Dots(.) :
 	ghosttty
 	neovim
+
+# TODO 
+-> declare kde theming and struct
+-> add a kde ff theme
+-> sop for adding shit to the config + a bit of real documentation
