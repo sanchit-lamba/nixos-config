@@ -34,6 +34,12 @@
       url = "github:winapps-org/winapps";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # OpenClaw
+    openclaw = {
+      url = "github:pjasicek/OpenClaw";
+      flake = false;
+    };
   };
 
   outputs = {
@@ -44,7 +50,7 @@
   } @ inputs: let
     inherit (self) outputs;
 
-    # System settings
+    # System settings for BlitzWing (desktop)
     settings = {
       # User configuration
       username = "san";
@@ -57,6 +63,25 @@
       editor = "vscode";
 
       videoDriver = "amdgpu";
+      locale = "en_IN";
+      timezone = "Asia/Kolkata";
+      kbdLayout = "us";
+      kbdVariant = "";
+      consoleKeymap = "us";
+    };
+
+    # System settings for AstroTrain (headless homeserver)
+    astroTrainSettings = {
+      username = "san";
+      hostname = "AstroTrain";
+
+      # Headless - no desktop environment
+      desktop = "none";
+      browser = "";
+      terminal = "";
+      editor = "nvim";
+
+      videoDriver = "modesetting";
       locale = "en_IN";
       timezone = "Asia/Kolkata";
       kbdLayout = "us";
@@ -83,6 +108,14 @@
         specialArgs = {inherit self inputs outputs;} // settings;
         modules = [
           ./hosts/BlitzWing/configuration.nix
+        ];
+      };
+
+      AstroTrain = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit self inputs outputs;} // astroTrainSettings;
+        modules = [
+          ./hosts/AstroTrain/configuration.nix
         ];
       };
     };
