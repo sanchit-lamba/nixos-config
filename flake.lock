@@ -142,16 +142,16 @@
     },
     "nixpkgs-stable": {
       "locked": {
-        "lastModified": 1762233356,
-        "narHash": "sha256-cGS3lLTYusbEP/IJIWGgnkzIl+FA5xDvtiHyjalGr4k=",
+        "lastModified": 1791883866,
+        "narHash": "sha256-yvkDdToRZ4IgPc9tSBzzCYJvTLf8n5eE3rgUkpCuD5A=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "ca534a76c4afb2bdc07b681dbc11b453bab21af8",
+        "rev": "a033e66ab94a6bedf2c3d58d93a36319d3cbbbaf",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixos-25.05",
+        "ref": "nixos-26.05",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -191,6 +191,22 @@
         "type": "github"
       }
     },
+    "openclaw": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1657689625,
+        "narHash": "sha256-EhwftTdXYin2A6PtCah5MYEsU3yZln0n6hGL1QQHgYo=",
+        "owner": "pjasicek",
+        "repo": "OpenClaw",
+        "rev": "5ee5740ca98377c76b13b50c84f610b0066a4717",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pjasicek",
+        "repo": "OpenClaw",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "firefox-gnome-theme": "firefox-gnome-theme",
@@ -199,6 +215,7 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs-stable": "nixpkgs-stable",
         "nur": "nur",
+        "openclaw": "openclaw",
         "spicetify-nix": "spicetify-nix",
         "winapps": "winapps"
       }
