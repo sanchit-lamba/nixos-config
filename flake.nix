@@ -16,10 +16,10 @@
     };
 
     # Original inputs
-    firefox-gnome-theme = {
-      url = "github:rafaelmardojai/firefox-gnome-theme";
-      flake = false;
-    };
+        firefox-gnome-theme = {
+            url = "github:rafaelmardojai/firefox-gnome-theme";
+          flake = false;
+        };
 
     # Optional advanced inputs for future use
     spicetify-nix = {
@@ -36,11 +36,11 @@
     };
 
     # OpenClaw
-    openclaw = {
-      url = "github:pjasicek/OpenClaw";
-      flake = false;
-    };
-  };
+#    openclaw = {
+#      url = "github:pjasicek/OpenClaw";
+#      flake = false;
+#    };
+#  };
 
   outputs = {
     self,
