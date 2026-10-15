@@ -3,7 +3,7 @@
 {
   home.username = "san";
   home.homeDirectory = lib.mkForce "/home/san";
-  home.stateVersion = "25.05";
+  home.stateVersion = "26.05";
   
   home.file.".mozilla/firefox/default/chrome/firefox-gnome-theme" = {
     source = inputs.firefox-gnome-theme;

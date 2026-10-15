@@ -7,9 +7,8 @@
   services.desktopManager.plasma6.enable = true;
 
   # Enable SDDM display manager
-  services.displayManager.sddm = {
+  services.displayManager.plasma-login-manager= {
     enable = true;
-    wayland.enable = true;
   };
 
   # Include full KDE package set

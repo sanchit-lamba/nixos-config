@@ -1,4 +1,4 @@
-# AstroTrain - Headless homeserver configuration
+# NiwasSewak - Headless homeserver configuration
 #
 # Barebones laptop running as an isolated headless server with:
 #   - Plex Media Server (with Real-Debrid via Zurg)
