@@ -15,11 +15,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-#    # Original inputs
-#        firefox-gnome-theme = {
-#            url = "github:rafaelmardojai/firefox-gnome-theme";
-#          flake = false;
-#        };
+    # Original inputs
+    firefox-gnome-theme = {
+      url = "github:rafaelmardojai/firefox-gnome-theme";
+      flake = false;
+    };
 
     # Optional advanced inputs for future use
     spicetify-nix = {
