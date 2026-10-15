@@ -50,7 +50,6 @@
     kdePackages.yakuake
     kdePackages.filelight
     kdePackages.elisa
-    kdePackages.haruna
     kdePackages.kolourpaint
     kdePackages.kleopatra
     kdePackages.kcron
