@@ -7,9 +7,7 @@
   services.desktopManager.plasma6.enable = true;
 
   # Enable SDDM display manager
-  services.displayManager.plasma6-login-manager= {
-    enable = true;
-  };
+  services.displayManager.sddm.enable = true;
 
   # Include full KDE package set
   environment.plasma6.excludePackages = [];
@@ -49,7 +47,6 @@
     kdePackages.yakuake
     kdePackages.filelight
     kdePackages.elisa
-    kdePackages.haruna
     kdePackages.kolourpaint
     kdePackages.kleopatra
     kdePackages.kcron
