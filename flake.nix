@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
+    #driftwm(pls work)
+    driftwm.url = "github:malbiruk/driftwm";
 
     home-manager = {
       url = "github:nix-community/home-manager";

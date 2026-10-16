@@ -19,6 +19,7 @@ Dots(.) :
 	neovim
 
 # TODO 
+-> handwrite a driftwm config and flake to run the lovely wm once.
 -> declare kde theming and struct
 -> add a kde ff theme
 -> sop for adding shit to the config + a bit of real documentation
@@ -27,3 +28,5 @@ Dots(.) :
 -> updated flake lock stale entries from their ancient rendition
 -> base blitz system @ 26.11 bleeding edge unstable.
 -> kde running > need to update to some other bs window manager
+-> add bottles as an alternative of the winapps shit
+	-> maybe add the bypassed graphics windows vm, ikik, but agentic ai should be to a point where it's reasonable to try, if astra can't do it I can't(atleast without giving next 3 weeks of my life to it).
