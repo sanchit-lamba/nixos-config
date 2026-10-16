@@ -13,6 +13,12 @@
   };
 
   environment.systemPackages = with pkgs; [
+    # DriftWM session tools
+    waybar
+    fuzzel
+    mako
+    libnotify
+
     # Qt/KDE-first basic desktop utilities
     kdePackages.dolphin
     kdePackages.dolphin-plugins
