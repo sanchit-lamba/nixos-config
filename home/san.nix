@@ -6,6 +6,10 @@
   username ? "san",
   ...
 }: {
+  imports = [
+    ./waybar.nix
+  ];
+
   home.username = username;
   home.stateVersion = "25.11";
 
