@@ -2,8 +2,8 @@
 {pkgs, ...}: {
   programs.bash = {
     enable = true;
-    enableCompletion = true;
-    
+    completion.enable = true;
+
     shellAliases = {
       ll = "ls -l";
       la = "ls -la";
@@ -13,13 +13,13 @@
       grep = "grep --color=auto";
       fgrep = "fgrep --color=auto";
       egrep = "egrep --color=auto";
-      
+
       # NixOS specific aliases
       nrs = "sudo nixos-rebuild switch --flake .";
       nrt = "sudo nixos-rebuild test --flake .";
       nrc = "sudo nixos-rebuild switch --flake . --show-trace";
       nfu = "nix flake update";
-      
+
       # Git aliases
       gs = "git status";
       ga = "git add";

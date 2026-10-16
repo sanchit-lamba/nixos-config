@@ -22,7 +22,7 @@
     ../../modules/services/zurg
     ../../modules/services/media-prefetch
     ../../modules/services/tailscale
-    ../../modules/services/openclaw
+    #../../modules/services/openclaw
 
     # Shell
     ../../modules/programs/shell/bash.nix

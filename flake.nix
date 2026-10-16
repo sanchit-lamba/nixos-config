@@ -107,7 +107,6 @@
       lib = nixpkgs.lib;
     };
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
-    "${settings.username}-module" = ./home / "${settings.username}.nix";
     nixosConfigurations = {
       BlitzWing = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -130,7 +129,7 @@
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
       extraSpecialArgs = {inherit inputs;} // settings;
       modules = [
-        self."${settings.username}-module"
+        ./home/${settings.username}.nix
       ];
     };
   };
