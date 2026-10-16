@@ -22,3 +22,8 @@ Dots(.) :
 -> declare kde theming and struct
 -> add a kde ff theme
 -> sop for adding shit to the config + a bit of real documentation
+
+# Did on real system
+-> updated flake lock stale entries from their ancient rendition
+-> base blitz system @ 26.11 bleeding edge unstable.
+-> kde running > need to update to some other bs window manager
