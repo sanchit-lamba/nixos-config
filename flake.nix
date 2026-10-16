@@ -4,8 +4,11 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
-    #driftwm(pls work)
-    driftwm.url = "github:malbiruk/driftwm";
+    # driftwm
+    driftwm = {
+      url = "github:malbiruk/driftwm";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -35,7 +38,7 @@
 #    winapps = {
 #      url = "github:winapps-org/winapps";
 #      inputs.nixpkgs.follows = "nixpkgs";
-    };
+#    };
 
     # OpenClaw
 #    openclaw = {
@@ -59,7 +62,7 @@
       hostname = "BlitzWing";
 
       # Desktop preferences
-      desktop = "kde";
+      desktop = "drift";
       browser = "firefox";
       terminal = "ghostty";
       editor = "vscode";

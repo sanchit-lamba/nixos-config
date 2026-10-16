@@ -31,6 +31,12 @@
     GTK_THEME = "gruvbox-dark";
   };
 
+  xdg.configFile."driftwm/config.toml".text = ''
+    [keybindings]
+    "mod+t" = "exec-terminal"
+    "mod+shift+t" = "toggle-pin-to-screen"
+  '';
+
   home.packages = with pkgs; [
     glib
   ];
