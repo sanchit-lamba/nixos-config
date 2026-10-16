@@ -30,9 +30,9 @@
     nur.url = "github:nix-community/NUR";
 
     # Windows application support
-    winapps = {
-      url = "github:winapps-org/winapps";
-      inputs.nixpkgs.follows = "nixpkgs";
+#    winapps = {
+#      url = "github:winapps-org/winapps";
+#      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # OpenClaw
