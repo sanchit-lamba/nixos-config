@@ -208,7 +208,6 @@
       enable = true;
       enableSSHSupport = true;
     };
-    adb.enable = true;
   };
 
   # Services

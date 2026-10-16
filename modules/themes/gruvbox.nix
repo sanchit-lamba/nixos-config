@@ -5,7 +5,6 @@
     gruvbox-plus-icons
     bibata-cursors
     gsettings-desktop-schemas
-    gtk-engine-murrine
     gnome-themes-extra
   ];
 }
